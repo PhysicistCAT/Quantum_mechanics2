@@ -1,0 +1,64 @@
+\documentclass{beamer}
+
+%------------------------------------------------------------
+%   BEAMER THEME AND PACKAGES
+%------------------------------------------------------------
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+%------------------------------------------------------------
+%   PRESENTATION INFORMATION
+%------------------------------------------------------------
+
+\title[QMD \& DFT]{A Journey into Quantum Molecular Dynamics and DFT} 
+\author{Bryan Martinez Anzola \and Jose Luis Zamora \and Juan Sebastian Acuña}
+\institute{Universidad Distrital Francisco José de Caldas}
+\date{\today}
+
+%------------------------------------------------------------
+%   BEGIN DOCUMENT
+%------------------------------------------------------------
+
+\begin{document}
+
+% --- TITLE PAGE ---
+\begin{frame}
+    \titlepage
+    
+\end{frame}
+
+% --- TABLE OF CONTENTS ---
+\begin{frame}{Outline}
+    \tableofcontents
+\end{frame}
+
+%------------------------------------------------------------
+%   SECTIONS
+%------------------------------------------------------------
+
+% --- SECTION 1: History of Quantum Molecular Dynamics ---
+\section{History of Quantum Molecular Dynamics}
+\input{history_qmd.tex}
+
+% --- SECTION 2: History of DFT ---
+\section{History of Density Functional Theory (DFT)}
+\input{history_dft.tex}
+
+% --- SECTION 3: Methods of QMD ---
+\section{Methods of QMD}
+\input{methods_qmd.tex}
+
+% --- SECTION 4: General Conclusions ---
+\section{General Conclusions}
+\input{conclusions.tex}
+
+% --- SECTION 5: References ---
+\section{References}
+\input{references.tex}
+
+\end{document}

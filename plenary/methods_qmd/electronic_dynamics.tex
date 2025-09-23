@@ -22,3 +22,182 @@
     \begin{block}{Semi-empirical Methods (SE-MD)}
     \end{block}
 \end{frame}
+
+\subsection{Post-Hartree-Fock (MP2-MD, CCSD-MD)}
+
+\begin{frame}{CCSD-MD}
+	\begin{block}{Paper Title}
+	On the Correlation Problem in Atomic and Molecular Systems. Calculation
+of Wavefunction Components in Ursell-Type Expansion Using Quantum
+Field Theoretical Methods
+	\end{block}
+\end{frame}
+
+\begin{frame}{The Problem: Electron Correlation}
+    \begin{block}{Main Objective}
+        The paper proposes a method to calculate the exact electron wavefunction $|\Psi\rangle$, starting from a single-particle approximation like Hartree-Fock ($|\Phi\rangle$).
+    \end{block}
+    \pause
+
+    \begin{itemize}
+        \item The main challenge is to describe the \textbf{correlation} in the motion of electrons.
+        \pause
+        \item The difference between the exact energy and the Hartree-Fock energy is the \textbf{correlation energy}.
+    \end{itemize}
+    \pause
+
+    \begin{alertblock}{The Central Proposal: The Exponential Ansatz}
+        The exact wavefunction is expressed as:
+        \[
+        |\Psi\rangle = e^{\hat{T}} |\Phi\rangle
+        \]
+        Where $\hat{T}$ is the \textbf{cluster operator}.
+    \end{alertblock}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Field Theory Tools (I)}
+    To derive the equations for the $\hat{T}$ operator, the paper uses a robust formalism:
+    \pause
+
+    \begin{block}{Second Quantization}
+        The Hamiltonian ($\hat{H} = \hat{Z} + \hat{V}$) is written in terms of creation ($\hat{X}_A^+$) and annihilation ($\hat{X}_A$) operators.
+    \end{block}
+    \pause
+    
+    \begin{block}{Hole-Particle Formalism}
+        \begin{itemize}
+            \item The reference state $|\Phi\rangle$ is treated as a "new vacuum."
+            \pause
+            \item A \textbf{particle} is an electron in an excited (virtual) orbital.
+            \pause
+            \item A \textbf{hole} is the absence of an electron in an occupied orbital.
+            \pause
+            \item New operators $\hat{Y}$ are defined to create/annihilate these excitations.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Field Theory Tools (II)}
+    \begin{block}{Wick's Theorem}
+        It's used to simplify products of creation and annihilation operators, breaking them down into normal products and contractions (pairings).
+    \end{block}
+    \pause
+    
+    \begin{block}{Feynman-like Diagrams}
+        A diagrammatic technique is introduced to systematically visualize and organize the complex algebraic terms that arise from solving the Schrödinger equation.
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{The Cluster Operator $\hat{T}$}
+    The operator $\hat{T}$ is a sum of operators that generate all possible particle-hole excitations.
+    \[
+    \hat{T} = \hat{T}_1 + \hat{T}_2 + \hat{T}_3 + \dots
+    \]
+    \pause
+
+    \begin{itemize}
+        \item<2-> \textbf{$\hat{T}_1$}: Generates single excitations (1 particle, 1 hole).
+        \item<3-> \textbf{$\hat{T}_2$}: Generates double excitations (2 particles, 2 holes).
+        \item<4-> \textbf{$\hat{T}_j$}: Generates excitations of order *j*.
+    \end{itemize}
+    \pause
+
+    \begin{exampleblock}<5->{Coupled Cluster Equations}
+        By projecting the Schrödinger equation onto the reference state and the excited states, a system of algebraic equations is obtained to determine the coefficients (amplitudes) of the $\hat{T}_j$ operators.
+    \end{exampleblock}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Relation to Configuration Interaction (CI)}
+    The Coupled Cluster (CC) method is closely related to CI.
+    \pause
+    
+    \textbf{CI wavefunction (linear expansion):}
+    \[
+    |\Psi\rangle_{CI} = |\Phi\rangle + \hat{C}_1|\Phi\rangle + \hat{C}_2|\Phi\rangle + \dots
+    \]
+    \pause
+    
+    \textbf{CC wavefunction (exponential expansion):}
+    \[
+    |\Psi\rangle_{CC} = \left(1 + \hat{T} + \frac{1}{2!}\hat{T}^2 + \dots \right) |\Phi\rangle
+    \]
+    \pause
+    
+    \begin{block}<4->{Operator Connection}
+        \begin{itemize}
+            \item $\hat{C}_1 = \hat{T}_1$
+            \item $\hat{C}_2 = \hat{T}_2 + \frac{1}{2}\hat{T}_1^2$
+            \item $\hat{C}_3 = \hat{T}_3 + \hat{T}_1\hat{T}_2 + \frac{1}{6}\hat{T}_1^3$
+            \item[...]
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Fundamental Advantage over Truncated CI}
+    \begin{alertblock}{Inclusion of Higher-Order Excitations}
+        If we truncate the CC expansion to only $\hat{T}_2$ (the CCSD method), the wavefunction implicitly contains contributions from quadruple excitations through the term $\frac{1}{2}\hat{T}_2^2|\Phi\rangle$.
+        \pause
+        \vspace{1em}
+        
+        These are the "disconnected" quadruple excitations, which are often the most important and are omitted in a CI calculation with only doubles (CID). \pause This makes the method \textbf{size-extensive}.
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Applications and Methodology}
+    The paper tests the method on two model systems.
+    \pause
+
+    \begin{itemize}
+        \item \textbf{Models Studied:}
+        \begin{itemize}
+            \item A simplified description of the N$_2$ molecule.
+            \item The $\pi$ system of the benzene molecule.
+        \end{itemize}
+        \pause
+        \bigskip
+        \item \textbf{Approximations Compared:}
+        \begin{enumerate}
+            \item<4-> \textbf{"Full" CI:} The exact reference standard.
+            \item<5-> \textbf{CI-D (B):} CI with only double excitations.
+            \item<6-> \textbf{Linear-CC (L):} Method with $\hat{T}_2$ and linearized equations.
+            \item<7-> \textbf{Nonlinear-CC (N):} Method with $\hat{T}_2$ and nonlinear equations.
+        \end{enumerate}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Key Results}
+    \begin{block}{Comparison of Correlation Energy}
+        \begin{itemize}
+            \item CI with Doubles (B) \textbf{underestimates} the correlation energy.
+            \pause
+            \bigskip
+            \item The Linear-CC (L) method \textbf{overestimates} the correlation energy.
+            \pause
+            \bigskip
+            \item The Nonlinear-CC (N) method gives results \textbf{very close and accurate} to the "Full" CI, showing a drastic improvement over CI with Doubles.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Method Conclusions}
+    \begin{itemize}
+        \item Jiří Čížek presents a \textbf{non-variational} and \textbf{systematic} method to address the electron correlation problem.
+        \pause
+        \bigskip
+        \item The formulation is based on \textbf{quantum field theory}, unifying concepts to create a computationally tractable framework.
+        \pause
+        \bigskip
+        \item The use of the \textbf{exponential ansatz} ($e^{\hat{T}}$) is key, as it efficiently captures higher-order excitations.
+        \pause
+        \bigskip
+        \item This work laid the foundation for \textbf{Coupled Cluster} methods, which are considered the "gold standard" in quantum chemistry today.
+    \end{itemize}
+\end{frame}

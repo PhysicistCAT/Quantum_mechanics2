@@ -20,6 +20,93 @@
     \end{block}
     
     \begin{block}{Semi-empirical Methods (SE-MD)}
+    	\textbf{MNDO - Modified Neglect of Diatomic Overlap}
+    \end{block}
+\end{frame}
+
+\subsection{Semi-Epirical - MNDO}
+
+\begin{frame}{MNDO}
+	\begin{block}{Paper Title}
+	Ground State of Molecules The MNDO Method Approximation and Parameters
+	\end{block}
+\end{frame}
+
+\begin{frame}{The MNDO method}
+    \begin{block}{Objective}
+        To develop a fast and reliable quantum method for predicting molecular properties.
+    \end{block}
+    \pause
+    
+    \begin{itemize}
+        \item It is a \textbf{semiempirical} method, meaning it combines theory with experimental parameters.
+        \pause
+        \bigskip
+        \item Its theoretical basis is the \textbf{NDDO} (Neglect of Diatomic Differential Overlap) approximation, which is more rigorous than previous methods like INDO or CNDO.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Approximation I: One-Center Terms}
+    \begin{block}{Energies and Repulsions on a Single Atom}
+        \begin{itemize}
+            \item The terms that describe the energy of an electron in an atom ($U_{\mu\mu}$) and the repulsion between electrons on the same atom ($g_{\mu\nu}$, $h_{\mu\nu}$) are not calculated theoretically.
+            \pause
+            \bigskip
+            \item Instead, they are derived by fitting the calculations to \textbf{experimental spectroscopic data} for the atom and its ions.
+            \pause
+            \bigskip
+            \item This implicitly introduces an \textbf{electron correlation} effect, as the fitted values are smaller than the theoretical ones.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Approximation II: Two-Center Repulsion}
+    \begin{alertblock}{The Key Innovation of MNDO}
+        The repulsion between the charge distribution of an atom A and another atom B is modeled classically.
+    \end{alertblock}
+    \pause
+    
+    \begin{itemize}
+        \item The interaction is decomposed into a sum of interactions between \textbf{multipoles} (monopole, dipole, quadrupole).
+        \pause
+        \bigskip
+        \item Each multipole is in turn represented as a simple configuration of \textbf{point charges}.
+        \pause
+        \bigskip
+        \item The final repulsion energy is calculated by summing the interactions between these point charges using a semiempirical formula.
+    \end{itemize}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{Approximation III: Chemical Bonding}
+    \begin{block}{Core-Core and Resonance Interactions}
+        \begin{itemize}
+            \item \textbf{Core-Core Repulsion:} The repulsion between the nuclei and inner-shell electrons ("cores") is modeled with a function that blends charge repulsion with an adjustable exponential term.
+            \pause
+            \bigskip
+            \item \textbf{Resonance Integrals ($\beta_{\mu\lambda}$):} These are responsible for most of the bonding energy. They are assumed to be proportional to the overlap of the atomic orbitals, with a constant that depends on atomic parameters.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{The Parametrization Process}
+    \begin{block}{Fitting to Experimental Reality}
+        \begin{itemize}
+            \item The mathematical expressions in the method contain a series of \textbf{atomic parameters} ($\zeta, U_{ss}, \beta_p$, etc.).
+            \pause
+            \bigskip
+            \item The values of these parameters are not derived from theory. They are obtained through a \textbf{nonlinear least-squares optimization process}.
+            \pause
+            \bigskip
+            \item The parameters are adjusted until the calculated properties (heats of formation, geometries, etc.) for a set of standard molecules match their \textbf{experimental values} as closely as possible.
+        \end{itemize}
     \end{block}
 \end{frame}
 
@@ -27,177 +114,42 @@
 
 \begin{frame}{CCSD-MD}
 	\begin{block}{Paper Title}
-	On the Correlation Problem in Atomic and Molecular Systems. Calculation
-of Wavefunction Components in Ursell-Type Expansion Using Quantum
-Field Theoretical Methods
+	On the Correlation Problem in Atomic and Molecular Systems. Calculation of Wavefunction Components in Ursell-Type Expansion Using Quantum Field Theoretical Methods 
 	\end{block}
 \end{frame}
 
-\begin{frame}{The Problem: Electron Correlation}
-    \begin{block}{Main Objective}
-        The paper proposes a method to calculate the exact electron wavefunction $|\Psi\rangle$, starting from a single-particle approximation like Hartree-Fock ($|\Phi\rangle$).
+
+\begin{frame}{Coupled Cluster (CC) Method}
+    \begin{block}{The Problem: Electron Correlation}
+        Standard methods like Hartree-Fock ignore that electron movements are correlated. The CC method aims to calculate this \textbf{correlation energy}.
     \end{block}
     \pause
 
-    \begin{itemize}
-        \item The main challenge is to describe the \textbf{correlation} in the motion of electrons.
-        \pause
-        \item The difference between the exact energy and the Hartree-Fock energy is the \textbf{correlation energy}.
-    \end{itemize}
-    \pause
-
-    \begin{alertblock}{The Central Proposal: The Exponential Ansatz}
-        The exact wavefunction is expressed as:
+    \begin{alertblock}{The Central Idea: The Exponential Ansatz}
+        It expresses the exact wavefunction $|\Psi\rangle$ by applying an exponential "cluster operator" $e^{\hat{T}}$ to the Hartree-Fock wavefunction $|\Phi\rangle$:
         \[
         |\Psi\rangle = e^{\hat{T}} |\Phi\rangle
         \]
-        Where $\hat{T}$ is the \textbf{cluster operator}.
     \end{alertblock}
 \end{frame}
 
 %------------------------------------------------
 
-\begin{frame}{Field Theory Tools (I)}
-    To derive the equations for the $\hat{T}$ operator, the paper uses a robust formalism:
-    \pause
-
-    \begin{block}{Second Quantization}
-        The Hamiltonian ($\hat{H} = \hat{Z} + \hat{V}$) is written in terms of creation ($\hat{X}_A^+$) and annihilation ($\hat{X}_A$) operators.
-    \end{block}
-    \pause
-    
-    \begin{block}{Hole-Particle Formalism}
-        \begin{itemize}
-            \item The reference state $|\Phi\rangle$ is treated as a "new vacuum."
-            \pause
-            \item A \textbf{particle} is an electron in an excited (virtual) orbital.
-            \pause
-            \item A \textbf{hole} is the absence of an electron in an occupied orbital.
-            \pause
-            \item New operators $\hat{Y}$ are defined to create/annihilate these excitations.
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}{Field Theory Tools (II)}
-    \begin{block}{Wick's Theorem}
-        It's used to simplify products of creation and annihilation operators, breaking them down into normal products and contractions (pairings).
-    \end{block}
-    \pause
-    
-    \begin{block}{Feynman-like Diagrams}
-        A diagrammatic technique is introduced to systematically visualize and organize the complex algebraic terms that arise from solving the Schrödinger equation.
-    \end{block}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}{The Cluster Operator $\hat{T}$}
-    The operator $\hat{T}$ is a sum of operators that generate all possible particle-hole excitations.
-    \[
-    \hat{T} = \hat{T}_1 + \hat{T}_2 + \hat{T}_3 + \dots
-    \]
-    \pause
-
+\begin{frame}{How Coupled Cluster Works}
     \begin{itemize}
-        \item<2-> \textbf{$\hat{T}_1$}: Generates single excitations (1 particle, 1 hole).
-        \item<3-> \textbf{$\hat{T}_2$}: Generates double excitations (2 particles, 2 holes).
-        \item<4-> \textbf{$\hat{T}_j$}: Generates excitations of order *j*.
-    \end{itemize}
-    \pause
-
-    \begin{exampleblock}<5->{Coupled Cluster Equations}
-        By projecting the Schrödinger equation onto the reference state and the excited states, a system of algebraic equations is obtained to determine the coefficients (amplitudes) of the $\hat{T}_j$ operators.
-    \end{exampleblock}
-\end{frame}
-
-%------------------------------------------------
-
-\begin{frame}{Relation to Configuration Interaction (CI)}
-    The Coupled Cluster (CC) method is closely related to CI.
-    \pause
-    
-    \textbf{CI wavefunction (linear expansion):}
-    \[
-    |\Psi\rangle_{CI} = |\Phi\rangle + \hat{C}_1|\Phi\rangle + \hat{C}_2|\Phi\rangle + \dots
-    \]
-    \pause
-    
-    \textbf{CC wavefunction (exponential expansion):}
-    \[
-    |\Psi\rangle_{CC} = \left(1 + \hat{T} + \frac{1}{2!}\hat{T}^2 + \dots \right) |\Phi\rangle
-    \]
-    \pause
-    
-    \begin{block}<4->{Operator Connection}
-        \begin{itemize}
-            \item $\hat{C}_1 = \hat{T}_1$
-            \item $\hat{C}_2 = \hat{T}_2 + \frac{1}{2}\hat{T}_1^2$
-            \item $\hat{C}_3 = \hat{T}_3 + \hat{T}_1\hat{T}_2 + \frac{1}{6}\hat{T}_1^3$
-            \item[...]
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}{Fundamental Advantage over Truncated CI}
-    \begin{alertblock}{Inclusion of Higher-Order Excitations}
-        If we truncate the CC expansion to only $\hat{T}_2$ (the CCSD method), the wavefunction implicitly contains contributions from quadruple excitations through the term $\frac{1}{2}\hat{T}_2^2|\Phi\rangle$.
-        \pause
-        \vspace{1em}
-        
-        These are the "disconnected" quadruple excitations, which are often the most important and are omitted in a CI calculation with only doubles (CID). \pause This makes the method \textbf{size-extensive}.
-    \end{alertblock}
-\end{frame}
-
-\begin{frame}{Applications and Methodology}
-    The paper tests the method on two model systems.
-    \pause
-
-    \begin{itemize}
-        \item \textbf{Models Studied:}
-        \begin{itemize}
-            \item A simplified description of the N$_2$ molecule.
-            \item The $\pi$ system of the benzene molecule.
-        \end{itemize}
+        \item The \textbf{cluster operator} $\hat{T}$ is a sum of excitation operators ($\hat{T} = \hat{T}_1 + \hat{T}_2 + \dots$), where $\hat{T}_1$ creates single excitations, $\hat{T}_2$ creates double excitations, and so on.
         \pause
         \bigskip
-        \item \textbf{Approximations Compared:}
-        \begin{enumerate}
-            \item<4-> \textbf{"Full" CI:} The exact reference standard.
-            \item<5-> \textbf{CI-D (B):} CI with only double excitations.
-            \item<6-> \textbf{Linear-CC (L):} Method with $\hat{T}_2$ and linearized equations.
-            \item<7-> \textbf{Nonlinear-CC (N):} Method with $\hat{T}_2$ and nonlinear equations.
-        \end{enumerate}
+        \item The method uses tools from \textbf{quantum field theory} (hole-particle formalism, Wick's theorem) to solve for the amplitudes of these excitations.
+        \pause
+        \bigskip
+        \item Its key advantage over Configuration Interaction (CI) is that truncating at $\hat{T}_2$ (CCSD) still includes the most important effects of quadruple excitations, making the method very efficient and \textbf{size-extensive}.
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Key Results}
-    \begin{block}{Comparison of Correlation Energy}
-        \begin{itemize}
-            \item CI with Doubles (B) \textbf{underestimates} the correlation energy.
-            \pause
-            \bigskip
-            \item The Linear-CC (L) method \textbf{overestimates} the correlation energy.
-            \pause
-            \bigskip
-            \item The Nonlinear-CC (N) method gives results \textbf{very close and accurate} to the "Full" CI, showing a drastic improvement over CI with Doubles.
-        \end{itemize}
-    \end{block}
-\end{frame}
-
-\begin{frame}{Method Conclusions}
-    \begin{itemize}
-        \item Jiří Čížek presents a \textbf{non-variational} and \textbf{systematic} method to address the electron correlation problem.
-        \pause
-        \bigskip
-        \item The formulation is based on \textbf{quantum field theory}, unifying concepts to create a computationally tractable framework.
-        \pause
-        \bigskip
-        \item The use of the \textbf{exponential ansatz} ($e^{\hat{T}}$) is key, as it efficiently captures higher-order excitations.
-        \pause
-        \bigskip
-        \item This work laid the foundation for \textbf{Coupled Cluster} methods, which are considered the "gold standard" in quantum chemistry today.
-    \end{itemize}
+\begin{frame}{CCSD vs GCCSD}
+    \begin{figure}
+        \includegraphics[width=0.8\textwidth]{images/CCSD.jpeg}
+        \caption{Superficies de energía potencial S1 y S2 en timina calculadas con CCSD (a) y GCCSD (b).}
+    \end{figure}
 \end{frame}

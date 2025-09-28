@@ -26,6 +26,63 @@
     \end{block}
 \end{frame}
 
+\begin{frame}{Los Autores del Problema FPU}
+    \begin{columns}[T] % La opción [T] alinea las columnas por la parte superior
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/fermi_face.jpg}
+            Enrico Fermi
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/pasta.png}
+            John Pasta
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/ulam.jpg}
+            Stanislaw Ulam
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/tsingou.jpg}
+            Mary Tsingou
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Los Autores del Problema FPU}
+    \begin{columns}[T] % La opción [T] alinea las columnas por la parte superior
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/fermi_face.jpg}
+            Enrico Fermi
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/john_pasta.jpg}
+            John Pasta
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/ulam.jpg}
+            Stanislaw Ulam
+        \end{column}
+        
+        \begin{column}{0.24\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{images/tsingou.jpg}
+            Mary Tsingou
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
 \begin{frame}{FPU Problem Graph}
     \begin{figure}
         \includegraphics[width=0.5\textwidth]{images/MANIAC.png}
@@ -154,3 +211,64 @@
 \end{frame}
 
 % --- END OF THE NEW SECTION ---
+
+\begin{frame}{The Classical Limitation and the Quantum Leap}
+    Classical potentials like Lennard-Jones are excellent, but they cannot describe processes where electrons are key, such as:
+    \pause
+    \begin{itemize}
+        \item Bond formation and breaking.
+        \item Chemical reactions.
+        \item Electronic properties and polarization.
+    \end{itemize}
+    \pause
+    \bigskip
+    
+    \begin{block}{The Quantum Need}
+        To simulate these phenomena, forces on the atoms must be calculated from the system's electronic structure using quantum mechanics. This gives rise to \textbf{Quantum Molecular Dynamics (QMD)} or \textbf{Ab Initio Molecular Dynamics (AIMD)}.
+    \end{block}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{The Revolution: Car-Parrinello MD (1985)}
+    \begin{block}{A Historical Milestone}
+        In 1985, Roberto Car and Michele Parrinello published a revolutionary paper that unified Density Functional Theory (DFT) with molecular dynamics.
+    \end{block}
+    \pause
+    
+    \begin{itemize}
+        \item \textbf{Key Idea:} Treat the coefficients of the electronic orbitals as dynamical variables with a "fictitious mass".
+        \pause
+        \item An \textbf{extended Lagrangian} is defined for both the nuclei and the electronic degrees of freedom.
+        \pause
+        \item This allows electrons and nuclei to evolve \textbf{simultaneously} in time, avoiding the expensive calculation of the electronic ground state at every single step.
+    \end{itemize}
+    \pause
+    
+    \begin{exampleblock}<4->{Impact}
+        The Car-Parrinello (CPMD) method made QMD simulations computationally feasible for systems of hundreds of atoms, opening the door to modern computational chemistry and materials science.
+    \end{exampleblock}
+\end{frame}
+
+%------------------------------------------------
+
+\begin{frame}{The Alternative: Born-Oppenheimer MD (BOMD)}
+    This approach more directly follows the chemical intuition of the Born-Oppenheimer approximation.
+    \pause
+    \begin{enumerate}
+        \item For a given nuclear configuration, solve the time-independent Schrödinger equation to find the \textbf{electronic ground state}.
+        \pause
+        \item Calculate the forces on the nuclei ($F = -\nabla E$).
+        \pause
+        \item Move the nuclei for a small time step using classical dynamics.
+        \pause
+        \item Repeat the process from step 1.
+    \end{enumerate}
+    \pause
+    
+    \begin{alertblock}<5->{Pros and Cons}
+        BOMD is conceptually simpler and ensures the system remains in the electronic ground state, but it requires a costly wavefunction optimization at every step, making it generally slower than CPMD.
+    \end{alertblock}
+\end{frame}
+
+% --- END OF NEW SECTIONS ---

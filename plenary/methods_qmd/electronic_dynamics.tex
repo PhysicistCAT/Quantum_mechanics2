@@ -24,7 +24,9 @@
     \end{block}
 \end{frame}
 
-\subsection{Semi-Epirical - MNDO}
+\subsection{Semi-Epirical (MNDO, AM1, Tight-Bending)}
+
+%-----------------MNDO----------------------------
 
 \begin{frame}{MNDO}
 	\begin{block}{Paper Title}
@@ -108,6 +110,79 @@
             \item The parameters are adjusted until the calculated properties (heats of formation, geometries, etc.) for a set of standard molecules match their \textbf{experimental values} as closely as possible.
         \end{itemize}
     \end{block}
+\end{frame}
+
+%-------------AM1------------------------------------------
+
+\begin{frame}{AM1}
+	\begin{block}{Paper Title}
+	AM1: A New Method General Purpose Quantum Mechanical Molecular Model
+	\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{AM1 - Austin Model 1}
+  
+  \begin{itemize}
+    \item \textbf{Austin Model 1 (AM1)} is a semiempirical quantum mechanical molecular model developed in the mid-80s by Michael J. S. Dewar's group. \pause
+    \item \textbf{Objective:} To be a general-purpose computational tool for studying: \pause
+    \begin{itemize}
+        \item Large molecular systems. \pause
+        \item Chemical reactions and their mechanisms. \pause
+    \end{itemize}
+    \item It was created as an alternative to \textit{ab initio} methods, which were prohibitively expensive in terms of computation time for molecules of real chemical interest.
+  \end{itemize}
+\end{frame}
+
+% --- Slide about the predecessor: MNDO ---
+\begin{frame}
+  \frametitle{The Predecessor: Weaknesses of MNDO}
+  
+  AM1 is a direct evolution of the MNDO (\textit{Modified Neglect of Diatomic Overlap}) method and was designed to correct its most significant flaws: \pause
+  
+  \begin{block}{Main Flaws of MNDO}
+    \begin{itemize}
+      \item Inability to correctly reproduce \textbf{hydrogen bonds}. \pause
+      \item Overestimation of interatomic repulsions, leading to errors in: \pause
+      \begin{itemize}
+          \item Sterically hindered molecules (e.g., neopentane). \pause
+          \item Molecules with four-membered rings. \pause
+      \end{itemize}
+      \item A tendency to calculate activation energies that were too high.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+% --- Slide on AM1 Methodology ---
+
+\begin{frame}
+  \frametitle{Methodology and Key Improvements}
+  
+  \begin{itemize}
+    \item AM1 is based on the same approximation as MNDO: \textbf{Neglect of Diatomic Differential Overlap (NDDO)}. \pause
+    \item \textbf{Key Modification:} The \textbf{Core Repulsion Function (CRF)} was optimized. \pause
+    \begin{itemize}
+        \item \textbf{Gaussian terms} were added to the MNDO function. \pause
+        \item This allows for the adjustment of interatomic repulsions to improve the description of medium and long-range interactions. \pause
+    \end{itemize}
+    \item The parameters for the elements C, H, O, and N were optimized simultaneously, using a larger dataset and an improved optimization procedure.
+  \end{itemize}
+\end{frame}
+
+% --- Slide on Results and Advantages ---
+\begin{frame}
+  \frametitle{Results and Advantages of AM1}
+  
+  AM1 proved to be a substantial improvement over MNDO without increasing computation time. \pause
+  
+  \begin{alertblock}{Main Advantages}
+    \begin{itemize}
+      \item<2-> Capable of genuinely modeling \textbf{hydrogen bonds}. \pause
+      \item<3-> More accurate estimates of \textbf{activation energies}. \pause
+      \item<4-> Better treatment of \textbf{hindered molecules} (e.g., neopentane) and those with ring strain (e.g., cubane).
+    \end{itemize}
+  \end{alertblock}
+  
 \end{frame}
 
 \subsection{Post-Hartree-Fock (MP2-MD, CCSD-MD)}

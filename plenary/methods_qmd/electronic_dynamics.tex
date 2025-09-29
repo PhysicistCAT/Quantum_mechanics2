@@ -5,7 +5,7 @@
     \textbf{Car-Parrinello Molecular Dynamics (CPMD)}
     \vspace{1em}
     
-    \textbf{Ehrenfest Molecular Dynamics}
+    \textbf{Ehrenfest Molecular Dynamics(EMD)}
 \end{frame}
 
 \begin{frame}{Methods for Electronic Dynamics}{By Level of Electronic Theory}
@@ -23,6 +23,231 @@
     	\textbf{MNDO - Modified Neglect of Diatomic Overlap}
     \end{block}
 \end{frame}
+
+%-----------------BOMD---------------------------- 
+
+\begin{frame}{BOMD}
+	\begin{block}{Paper Title}
+  Born-Oppenheimer Molecular Dynamics	
+	\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Core Idea}
+    \begin{columns}[T]
+        \begin{column}{0.4\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Nuclei are fixed. Electrons move.
+                \item The huge mass difference is key.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/BO_app.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Result}
+    \begin{columns}[T]
+        \begin{column}{0.4\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Defines the concept of molecular structure.
+                \item It generates Potential Energy Surfaces (PES).
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/pot_ener_H2.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Limitation}
+     \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Fails when electronic states are coupled.
+                \item Not suitable for most photochemical reactions.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \includegraphics[width=\textwidth]{images/conic_intersect.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+ %-----------------EMD---------------------------- 
+
+\begin{frame}{EMD}
+	\begin{block}{Paper Title}
+	Ehrenfest Molecular Dynamics 
+	\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Core Idea}
+     \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Nuclei are treated as classical particles.
+                \item Electrons are treated quantum mechanically.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/ehrenfest1.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Application}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Simulates non-adiabatic processes and transitions.
+                \item Models molecular relaxation after photoexcitation.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/ehrenfest2.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Limitation}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item It is a "mean-field" approximation.
+                \item Fails to describe wavepacket branching.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/ehrenfest3.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%-----------------MP2---------------------------- 
+
+\begin{frame}{MP2-MD}
+	\begin{block}{Paper Title}
+	Møller-Plesset Molecular Dynamics 
+	\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Core Idea}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Improves upon the Hartree-Fock method.
+                \item Includes instantaneous electron correlation.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/MP21.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Application}
+     \begin{columns}[T]
+        \begin{column}{0.4\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Accurately describes van der Waals forces.
+                \item Crucial for non-covalent interactions.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/MP22.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Limitation}
+    \begin{columns}[T]
+        \begin{column}{0.45\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Computationally expensive, scaling as N\textsuperscript{5}.
+                \item Can fail for strongly correlated systems.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \includegraphics[width=\textwidth]{images/MP23.png}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%-----------------CCSD---------------------------- 
+
+\begin{frame}{CCSD-MD}
+	\begin{block}{Paper Title}
+	Coupled Cluster Singles and Doubles Molecular Dynamics
+	\end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Method}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Uses Machine Learning for MD simulations.
+                \item Achieves "gold standard" CCSD(T) accuracy.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \includegraphics[width=\textwidth]{images/CCSD(T)1.jpeg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Result}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Accurately reproduced water's phase diagram.
+                \item Captured water's famous density anomaly.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/CCSD(T)2.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Future}
+    \begin{columns}[T]
+        \begin{column}{0.5\textwidth}
+            \vspace{2cm}
+            \begin{itemize}
+                \item Revolutionizing simulations in materials science.
+                \item Enables gold-standard accuracy for large systems.
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{images/CCSD(T)3.jpg}
+        \end{column}
+    \end{columns}
+\end{frame}
+
 
 \subsection{Semi-Epirical (MNDO, AM1, Tight-Bending)}
 

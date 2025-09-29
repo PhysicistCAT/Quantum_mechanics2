@@ -8,3 +8,61 @@
 
     \textbf{Wave Packet Propagation}
 \end{frame}
+
+%---------------------PIMD------------------------------------------
+
+\begin{frame}{PIMD (Path Integral Molecular Dynamics)}
+	\begin{block}{Paper Title}
+	Study of an F center in molten KCl
+	\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Problem: A Quantum Particle in a Classical World}
+  
+  Simulating systems with both quantum and classical particles presents a major challenge. \pause
+  
+  \begin{itemize}
+    \item Consider an electron (a quantum particle) dissolved in a bath of classical ions, like molten salt. \pause
+    
+    \item The electron does not have a fixed position; its quantum nature means it is "fuzzy" and delocalized. \pause
+    
+    \item How can we combine the quantum statistical mechanics of the electron with the classical statistical physics of the ions in a single simulation?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Path Integral Solution: A Quantum-Classical Isomorphism}
+  
+  The method uses Richard Feynman's path integral formulation to map the quantum problem onto an equivalent classical problem. \pause
+  
+  \begin{block}{The Isomorphism}
+    A single quantum particle is formally proven to be equivalent to a classical \textbf{ring polymer} (or "necklace") made of P beads.
+  \end{block} \pause
+  
+  \begin{itemize}
+    \item Each bead in the necklace is connected to its two neighbors by \textbf{harmonic springs}. This part of the model represents the quantum kinetic energy. \pause
+    
+    \item Every bead also interacts with the external potential created by the classical particles. \pause
+    
+    \item This mapping becomes exact as the number of beads (P) approaches infinity. In practice, a finite but sufficiently large P is used.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Simulating the Necklace: PIMD in Action}
+  
+  Once the quantum particle is represented as a classical polymer, the entire system can be simulated using standard \textbf{Molecular Dynamics (MD)}. \pause
+  
+  \begin{alertblock}{Physical Interpretation}
+    \begin{itemize}
+      \item The \textbf{spatial spread} of the polymer beads directly represents the quantum "fuzziness" or delocalization of the particle. \pause
+      \begin{itemize}
+          \item A compact, collapsed necklace means the particle is highly localized (like an F center).
+          \item A spread-out, large necklace means the particle is delocalized. \pause
+      \end{itemize}
+      \item This allows us to calculate quantum properties like kinetic energy and study phenomena like electron localization, all within a classical simulation framework.
+    \end{itemize}
+  \end{alertblock}
+  
+\end{frame}

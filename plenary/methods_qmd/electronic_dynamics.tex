@@ -48,7 +48,7 @@
     \end{itemize}
 \end{frame}
 
-%------------------------------------------------
+
 
 \begin{frame}{Approximation I: One-Center Terms}
     \begin{block}{Energies and Repulsions on a Single Atom}
@@ -64,7 +64,7 @@
     \end{block}
 \end{frame}
 
-%------------------------------------------------
+
 
 \begin{frame}{Approximation II: Two-Center Repulsion}
     \begin{alertblock}{The Key Innovation of MNDO}
@@ -83,7 +83,7 @@
     \end{itemize}
 \end{frame}
 
-%------------------------------------------------
+
 
 \begin{frame}{Approximation III: Chemical Bonding}
     \begin{block}{Core-Core and Resonance Interactions}
@@ -96,7 +96,7 @@
     \end{block}
 \end{frame}
 
-%------------------------------------------------
+
 
 \begin{frame}{The Parametrization Process}
     \begin{block}{Fitting to Experimental Reality}
@@ -134,7 +134,6 @@
   \end{itemize}
 \end{frame}
 
-% --- Slide about the predecessor: MNDO ---
 \begin{frame}
   \frametitle{The Predecessor: Weaknesses of MNDO}
   
@@ -153,7 +152,6 @@
   \end{block}
 \end{frame}
 
-% --- Slide on AM1 Methodology ---
 
 \begin{frame}
   \frametitle{Methodology and Key Improvements}
@@ -185,7 +183,67 @@
   
 \end{frame}
 
+%------------------------Tight-Bending---------------------
+
+\begin{frame}{Tight-Bending}
+	\begin{block}{Paper Title}
+	Self-consistent-charge density-functional tight-binding method for simulations of complex
+materials properties
+	\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Limits of Standard Tight-Binding}
+  
+  Standard Tight-Binding (TB) is a computationally fast method derived from Density-Functional Theory (DFT). \pause
+  
+  \begin{itemize}
+    \item It works well when the charge density of a system can be approximated as a simple superposition of neutral atom densities. \pause
+    
+    \item However, it has a significant limitation: it is a \textbf{non-self-consistent} method. \pause
+    
+    \item This means it cannot account for the transfer of charge between different types of atoms. This leads to failures in polar or heteronuclear systems and limits the method's overall transferability.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The SCC-DFTB Solution: Self-Consistent Charges}
+  
+  The Self-Consistent-Charge (SCC) method extends the standard approach by allowing the system's charges to re-distribute. \pause
+  
+  \begin{block}{The Core Principle}
+    It is based on a second-order expansion of the DFT total energy with respect to fluctuations in the charge density ($\delta n$).
+  \end{block} \pause
+  
+  \begin{itemize}
+    \item A new energy term is added that depends on the Mulliken charge fluctuations ($\Delta q$) on each atom. \pause
+    
+    \item This term correctly describes long-range Coulomb interactions between charges and includes on-site self-interaction effects related to an atom's chemical hardness (the Hubbard parameter U). \pause
+    
+    \item The method then iterates, adjusting the charges and recalculating the energy until a self-consistent, minimum-energy solution is found.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why It Matters: The Payoff of SCC-DFTB}
+  
+  This self-consistent charge correction makes the method significantly more accurate and robust. \pause
+  
+  \begin{alertblock}{Key Advantages}
+    \begin{itemize}
+      \item \textbf{Enhanced Transferability:} By properly treating charge transfer, the method is successfully applied to a much broader range of systems, including polar molecules, semiconductors, and large biomolecules. \pause
+      
+      \item \textbf{Improved Accuracy:} It leads to a considerable improvement in total energies, forces, vibrational frequencies, and molecular geometries compared to the non-SCC approach. \pause
+      
+      \item \textbf{Efficiency is Maintained:} The self-consistent cycle is very fast, typically converging in just 3-5 iterations. The method remains orders of magnitude faster than ab initio calculations.
+    \end{itemize}
+  \end{alertblock}
+  
+\end{frame}
+
 \subsection{Post-Hartree-Fock (MP2-MD, CCSD-MD)}
+
+%--------------------------CCSD------------------
 
 \begin{frame}{CCSD-MD}
 	\begin{block}{Paper Title}

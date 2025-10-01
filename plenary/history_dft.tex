@@ -1,0 +1,86 @@
+\begin{frame}{\large I. Origins: The Precursors}
+    \framesubtitle{The Density as a Basic Variable}
+    \begin{itemize}
+        \item The earliest density-based methods trace back to the Thomas, Fermi, and Dirac papers (1927–1930).
+        \item \textbf{The Thomas-Fermi-Dirac model} described atoms based purely on the electron density $n(\mathbf{r})$.
+        \item The motivation was to find "approximate practical methods" to solve the complicated quantum mechanical equations (Dirac, 1929).
+        \item Limitation: The Thomas-Fermi model has severe deficiencies, such as the inability to predict molecular or solid binding.
+    \end{itemize}
+\end{frame}
+
+% 4. Modern Formalism
+\begin{frame}{\large II. Modern Density Functional Formalism (HK)}
+    \framesubtitle{The Hohenberg-Kohn Theorems (1964)}
+    \begin{itemize}
+        \item HK Theorem 1: The external potential $V_{\text{ext}}(\mathbf{r})$ (and thus the full Hamiltonian) is uniquely determined by the ground-state electron density $n(\mathbf{r})$.
+        \item HK Theorem 2: A universal functional for the energy, $E[n]$, exists, and the correct ground-state density minimizes this Functional.
+        \begin{equation*}
+            E[n, V_{\text{ext}}] = F[n] + \int n(\mathbf{r}) V_{\text{ext}}(\mathbf{r}) d\mathbf{r} \quad (\text{Variational Principle})
+        \end{equation*}
+        \item This formal grounding eliminated the need for the complicated $3N$-dimensional wave function $\Psi(\mathbf{r}_1, \ldots, \mathbf{r}_N)$.
+    \end{itemize}
+\end{frame}
+
+% 5. The KS Scheme
+\begin{frame}{\large III. The Kohn-Sham Scheme and Approximations}
+    \framesubtitle{The Practical Method (1965)}
+    \begin{itemize}
+        \item The Kohn-Sham (KS) scheme introduced a non-interacting auxiliary system that produces the exact ground-state density $n(\mathbf{r})$ of the real interacting system.
+        \item This turns the many-body problem into a set of solvable single-particle equations (Kohn-Sham equations).
+        \item The complexity is now contained in the exchange-correlation functional $E_{xc}[n]$.
+        \item Key Approximations:
+        \begin{itemize}
+            \item Local Density Approximation (LDA): Based on the homogeneous electron gas.
+            \item Generalized Gradient Approximation (GGA): Introduced dependence on the density gradient, $\nabla n$.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+% 6. The Breakthrough (1990-Present)
+\begin{frame}{\large IV. The Rise to Prominence (Post-1990)}
+    \begin{itemize}
+        \item Widespread application, particularly in chemistry and materials science, grew astonishingly after 1990.
+        \item The number of publications citing DFT/DF increased dramatically, marking a huge success story (Fig. 1).
+        \item Crucial Developments:
+        \begin{itemize}
+            \item Car-Parrinello Molecular Dynamics (1985): Combined DFT with MD, enabling efficient study of structures and reactions.
+            \item Improved Functionals: Development of GGAs and hybrid functionals (e.g., incorporating Hartree-Fock exact exchange).
+        \end{itemize}
+        \item A 1991 conference in Menton is cited as a major turning point for acceptance among chemists.
+    \end{itemize}
+\end{frame}
+
+% 7. Current Successes
+\begin{frame}{\large V. Current Status and Applications}
+    \framesubtitle{A Standard Tool in Modern Science}
+    \begin{itemize}
+        \item DFT is now well-established in condensed matter physics and has a significant presence in theoretical chemistry.
+        \item It is particularly valuable for calculating the total energy ($E$) and energy surfaces $E(\mathbf{R}_i)$, which are essential for determining ground-state structures and chemical reaction paths.
+        \item DFT allows calculations of complex systems in biochemistry and materials science that were "far beyond expectations" in 1990.
+    \end{itemize}
+\end{frame}
+
+% 8. Future and Challenges
+\begin{frame}{\large VI. Challenges and Future Outlook}
+    \framesubtitle{Quo Vadis? (Whither Goest Thou?)}
+    \begin{itemize}
+        \item Despite its success, prominent practitioners have raised concerns about the future ("best of times and the worst of times").
+        \item \textbf{The Central Problem:} The lack of a systematic way to improve the \textbf{Exchange-Correlation functional ($E_{xc}$)}.
+        \item \textbf{Current Challenges:}
+        \begin{itemize}
+            \item Accurately describing \textbf{Dispersion (van der Waals) interactions}.
+            \item Treating \textbf{"Strongly correlated" systems}.
+            \item The proliferation of hundreds of approximate functionals makes choosing the "best" one ambiguous and risks a "semi-empirical" view of the theory.
+        \end{itemize}
+        \item The field is continually exploring extensions, such as combining DFT with Density Matrix Functional Theory (DMFT) or Quantum Monte Carlo (QMC).
+    \end{itemize}
+\end{frame}
+
+% 9. Conclusion
+\begin{frame}{\large VII. Conclusion}
+    \begin{itemize}
+        \item DFT is a huge success story, having moved from theoretical origins to a mainstream computational tool due to the work of Hohenberg, Kohn, and Sham and the subsequent development of reliable functional approximations.
+        \item Its widespread acceptance came after 1990, driven by its efficiency and ability to handle large systems, a goal anticipated by Dirac in 1929.
+        \item The future of DFT rests on the continuing development of accurate, universal, and physically sound exchange-correlation functionals.
+    \end{itemize}
+\end{frame}

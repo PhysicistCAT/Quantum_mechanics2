@@ -10,6 +10,11 @@
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{url}
+
+% --- BIBLATEX PACKAGE (for modern bibliography) ---
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{references.bib} % IMPORTANT: The .bib extension is required here
 
 %------------------------------------------------------------
 %   PRESENTATION INFORMATION
@@ -29,7 +34,6 @@
 % --- TITLE PAGE ---
 \begin{frame}
     \titlepage
-    
 \end{frame}
 
 % --- TABLE OF CONTENTS ---
@@ -59,6 +63,11 @@
 
 % --- SECTION 5: References ---
 \section{References}
-\input{references.tex}
+
+\begin{frame}[allowframebreaks]{References}
+    % This single command prints the bibliography
+    \printbibliography
+    \nocite{*}
+\end{frame}
 
 \end{document}

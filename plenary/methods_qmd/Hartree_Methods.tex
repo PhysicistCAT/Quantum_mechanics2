@@ -1,0 +1,189 @@
+\section{The Many-Body Problem and Hartree's Method}
+\begin{frame}
+    \frametitle{Context and Hartree's Approximation (1928)}
+    \begin{itemize}
+        \item The non-relativistic quantum mechanical $\mathbf{N}$-electron problem is formulated by the Schrödlinger wave equation in $3N$-dimensional configuration space .
+        \item An exact solution of this equation presents insurmountable mathematical difficulties, necessitating the reliance on approximation methods .
+        \item D. R. Hartree proposed a brilliant approximation method (the $\mathbf{method of self-consistent field}$) .
+        \item Hartree's approach assumes that the effects of electrons on one another can be represented by supposing each moves in a central non-Coulomb field of force.
+        \item The method retains the classical concept of the orbit, which lends it great physical interpretability .
+        \item \textbf{The Wave Function Ansatz:} Hartree's approach is mathematically equivalent to approximating the wave function $\Psi$ as a simple product of functions of the coordinates of individual electrons :
+        $$\Psi \approx \psi_1(x_1)\psi_2(x_2) \dots \psi_N(x_N) \quad \text{[6, 8]}$$
+        \item Fock showed that introducing this product ansatz into the variational principle $\delta \int \Psi^* (L - E) \Psi d\tau = 0$ leads directly to Hartree's equations.
+    \end{itemize}
+\end{frame}
+
+\section{Limitations and Fock's Variational Refinement}
+\begin{frame}
+    \frametitle{The Limitation of Hartree's Method and Fock's Refinement (1930)}
+    \begin{itemize}
+        \item The simple product ansatz  used by Hartree $\mathbf{does not possess the necessary symmetry properties}$ required by group theory (except for the ground state of Helium).
+        \item Consequently, Hartree's equations represent only a fairly crude approximation .
+        \item This approximation corresponds to the $\mathbf{neglect of the so-called Exchange Energy}$ (\textit{Austauschenergie}) .
+        \item V. Fock demonstrated that the optimum solution compatible with describing the atomic state via individual electron wave functions ($\psi_i$) is not yet reached in the Hartree method .
+        \item \textbf{The Improved Ansatz:} A better approximation is achieved by choosing an expression for $\Psi$ that has the correct symmetry .
+        \item Fock's approach utilizes the $\mathbf{variational principle}$ to establish a system of equations that is more accurate than Hartree's .
+        \item Fock's theory considers the Pauli principle implicitly by influencing the symmetry properties of the wave function .
+    \end{itemize}
+\end{frame}
+
+\section{Fock's Determinant Ansatz and Exchange Terms}
+\begin{frame}
+    \frametitle{Fock's Determinant Ansatz and Exchange Terms}
+    \begin{itemize}
+        \item The wave function $\Psi$ must behave like a linear combination of the eigenfunctions corresponding to a given term .
+        \item In the important special case of $\mathbf{"complete degeneracy of the term system"}$, $\Psi$ can be approximated by a $\mathbf{product of two determinants}$:
+        $$\Psi = \Psi_1 \Psi_2 \quad \text{[6, 14]}$$
+        \item The calculation for this determinant product ansatz was carried out by Fock.
+        \item The resulting equations for the functions $\psi_i(x)$ contain $\mathbf{exchange terms}$ (\textit{Austauschglieder}).
+        \item $\mathbf{Neglecting these exchange terms leads back to the Hartree system of equations}$.
+        \item The exchange terms, represented by coefficients with differing indices (e.g., $G_{12}(x)$, $G_{21}(x)$, $H_{12}$, $H_{21}$), are generally smaller than diagonal terms ($G_{11}, G_{22}$) but are significant enough that they should not be neglected.
+    \end{itemize}
+\end{frame}
+
+\section{The Fock Equations and Energy Interpretation}
+\begin{frame}
+    \frametitle{Structure and Derivation of Fock's Equations}
+    \begin{itemize}
+        \item Both Hartree's equations  and Fock's refined equations can be viewed as the $\mathbf{Euler equations of a three-dimensional variational problem}$.
+        \item The corresponding action integral for Fock's equations is equal to the total energy $E$ of the atom.
+        \item A characteristic feature preserved in Fock's equations is that the action of the electron on itself ($G_{ii}(x)$) is subtracted from the full potential energy $V(x)$.
+        \item \textbf{Energy Expression:} For the example of Helium (\textit{Parhelium}), the energy $E$ is given by $H_{11} + H_{22} + (12|G|12) - (12|G|21)$ .
+        \item The integral representing the electron interaction energy involves the term $\rho(x)\rho(x') - [\rho(x, x')|^2$ instead of just the product of charge densities.
+        \item This structure is interpreted to mean that $\mathbf{the electron does not act upon itself}$.
+        \item Fock’s results show a remarkable similarity with expressions derived by P. Jordan using the method of renewed quantization.
+    \end{itemize}
+\end{frame}
+
+\section{Computational Approach and Accuracy}
+\begin{frame}
+    \frametitle{Computational Methods and Expected Accuracy}
+    \begin{itemize}
+        \item \textbf{Atomic Units:} Both works utilize atomic units to simplify calculations and eliminate universal constants (e.g., unit of length $a_H$, unit of charge $e$, unit of energy $e^2/a_H$) [23-25].
+        \item Hartree's differential equation for the radial function $P=r\psi$ is $\mathbf{P'' + [2v - \epsilon - l(l+1)/r^2]P = 0}$ [26]. $P^2$ gives the radial density of charge [27, 28].
+        \item \textbf{Integration Technique (Hartree):} Characteristic values of $\epsilon$ are found by integrating the wave equation $\mathbf{outwards from} r=0$ and $\mathbf{inwards from} r=\infty$, finding the value of $\epsilon$ where the logarithmic derivatives ($P'/P$ or $\eta$) fit at an intermediate radius [28, 29].
+        \item Hartree developed exact equations for the variation of a solution with a change in potential ($\Delta v$) or energy ($\Delta \epsilon$), which significantly reduces numerical work [30, 31].
+        \item \textbf{Accuracy:} Fock anticipates that if the assumption of spherical symmetry is made, the numerical integration of his equations should not be substantially more difficult than Hartree's calculations, but the results are expected to be $\mathbf{considerably more accurate}$.
+        \item Fock provides a formula for spectral line intensities which includes terms corresponding to a "rearrangement" of the inner electrons during a quantum jump [6, 33-35].
+    \end{itemize}
+\end{frame}
+
+\section{Summary of Comparison}
+\begin{frame}
+    \frametitle{Comparison Summary}
+    \begin{center}
+        \begin{tabular}{|l|c|c|}
+            \hline
+            \textbf{Feature} & \textbf{Hartree (1928)} & \textbf{Fock (1930)} \\
+            \hline
+            Ansatz ($\Psi$) & Simple Product ($\prod \psi_i$)  & Product of Determinants ($\Psi_1 \Psi_2$) \\
+            \hline
+            Symmetry & Incorrect/Crude  & Correct/Improved \\
+            \hline
+            Exchange Terms & $\mathbf{Neglected}$  & $\mathbf{Included}$ (Austauschglieder)  \\
+            \hline
+            Variational Basis & Follows from Product Ansatz  & Explicit basis for deriving exact equations  \\
+            \hline
+            Expected Accuracy & Crude Approximation  & Considerably More Accurate  \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \vfill
+    \textbf{Key Takeaways:}
+    \begin{itemize}
+        \item Hartree established the method of the self-consistent field, providing a valuable first approximation based on a simple product wave function.
+        \item Fock rigorously derived a more accurate system of equations based on a symmetry-correct determinant ansatz, which automatically incorporates the vital $\mathbf{exchange~interaction}$.
+        \item The inclusion of exchange terms remedies the omission of the self-interaction in the description of electron energies.
+    \end{itemize}
+\end{frame}
+%--------------------------------------------------------------------------------
+
+\begin{frame}
+    \frametitle{MCTDH: A New Approach to Molecular Dynamics}
+    \begin{itemize}
+        \item \textbf{Context:} Approximate methods are needed for solving molecular dynamics in a time-dependent picture, particularly for systems with several degrees of freedom.
+        \item \textbf{Problem with Existing Methods:} Known multi-configurational approaches are often based on the use of projection operators.
+        \begin{itemize}
+            \item The choice of these projection operators is often unclear .
+            \item Results explicitly depend on the arbitrary choice of the projection operators, which is unsatisfactory.
+        \end{itemize}
+        \item \textbf{The New Proposal:} The Multi-Configurational Time-Dependent Hartree (MCTDH) approach is a new time-dependent multi-configurational approach that \textbf{does not require} the \textit{a priori} introduction of projection operators .
+        \item \textbf{Applicability:} It can be used for $n$ degrees of freedom and for any choice of the number of configurations .
+    \end{itemize}
+\end{frame}
+
+% --- Slide 2: Methodology and Working Equations ---
+\begin{frame}
+    \frametitle{MCTDH Theory: The Ansatz and Constraints}
+    
+    \textbf{1. General Ansatz:}
+    The exact time-dependent wave function $\Psi$ is approximated by the multi-configurational trial function :
+    \begin{equation*}
+        \Psi(x_1,...,x_n, t)= \sum_{j_1,...,j_n} a_{j_1...j_n} (t) \prod_{k=1}^n \phi_{j_k}^{(k)}(x_k, t)
+    \end{equation*}
+    \begin{itemize}
+        \item The functions $\phi_{j_k}^{(k)}$ are termed "single-particle" functions.
+        \item The numbers of "single-particle" functions ($m_k$) can be chosen differently for each degree of freedom.
+    \end{itemize}
+    
+\end{frame}
+\begin{frame}
+    \textbf{2. Key Constraints:}
+    \begin{itemize}
+        \item \textbf{Orthonormality:} The "single-particle" functions must be orthonormal at all times.
+        \item \textbf{Minimizing Time Derivative:} Due to redundancy in the ansatz, an additional constraint is applied:
+        $$\langle \phi_j^{(k)} | \dot{\phi}_j^{(k)} \rangle = 0$$
+        \item \textbf{Effect:} This constraint ensures that the time evolution is performed as much as possible by a change in the coefficients $a_{j_1...j_n}$, thereby minimizing the time derivative of the "single-particle" functions and simplifying the working equations.
+    \end{itemize}
+    
+    \textbf{3. Working Equations:}
+    Derived using the Dirac-Frenkel variational principle, resulting in coupled equations for coefficients  and "single-particle" function evolution . The working equations are simpler and more transparent than those of other approaches .
+\end{frame}
+
+% --- Slide 3: Illustrative Example and Convergence ---
+\begin{frame}
+    \frametitle{Testing and Diagnostics: Fast Convergence}
+    
+    \textbf{Illustrative Example (2D)}:
+    \begin{itemize}
+        \item The approach was tested on a two-dimensional model of coupled oscillators (a modified Hénon-Heiles potential).
+        \item For two degrees of freedom, an exact numerical solution is possible, providing an unambiguous test.
+        \item \textbf{Results:} The MCTDH method showed \textbf{fast convergence} towards the exact results as the number of configurations ($m$) was increased. The error was approximately halved for each increment of $m$.
+        \item \textbf{Comparison:} Wave packet plots demonstrated that MCTDH with $m=3$ and $m=5$ aligns closely with the exact results, while the single-configuration Time-Dependent Hartree (TDH) result (m=1) deviates significantly.
+    \end{itemize}
+    \end{frame}
+    \begin{frame}
+    \textbf{Diagnostic Tool: Natural Weights}:
+    \begin{itemize}
+        \item The eigenvalues of the matrix $A^{(k)\dagger}A^{(k)}$ correspond to the \textbf{weights of the natural single-particle functions}.
+        \item These weights provide an \textbf{important diagnostic tool}. A small eigenvalue signals convergence with respect to the number of single-particle functions used for that degree of freedom.
+        \item \textbf{Utility:} Inspection of these weights is very useful because they indicate whether a sufficient number of functions has been included, \textit{without} the necessity of comparing against an exact calculation.
+    \end{itemize}
+\end{frame}
+
+% --- Slide 4: Key Properties and Conclusions ---
+\begin{frame}
+    \frametitle{Summary and Advantages}
+    
+    \textbf{MCTDH Key Properties:}
+    \begin{itemize}
+        \item The working equations are found to be \textbf{well behaved numerically}.
+        \item The propagation conserves both the \textbf{norm and the mean energy}.
+        \item Due to the potential for a singular coefficient matrix, regularization (using a small positive number $\epsilon$) is necessary for numerical stability.
+    \end{itemize}
+\end{frame}
+\begin{frame}
+    \textbf{Main Advantages:}
+    \begin{itemize}
+        \item \textbf{Simplicity:} The derived working equations are simpler and more transparent than those of alternative multi-configurational approaches.
+        \item \textbf{No Fixed Projectors:} The approach conserves the orthogonality among the "single-particle" functions without the explicit introduction of fixed (time-independent) projection operators. This avoids reducing the trial space of the propagated wave function.
+        \item \textbf{Generalization:} The formalism is generalized to treat any number of degrees of freedom and any desired number of configurations from the beginning.
+    \end{itemize}
+    
+    \textbf{Outlook:}
+    \begin{itemize}
+        \item The formalism seems easily extendable to a \textbf{Multi-Configuration Time-Dependent Hartree-Fock (MCTDHF)} approach for time-dependent problems in quantum chemistry or nuclear physics.
+    \end{itemize}
+
+\end{frame}
+

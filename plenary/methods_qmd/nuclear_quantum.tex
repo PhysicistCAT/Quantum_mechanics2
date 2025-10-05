@@ -1,0 +1,201 @@
+\begin{frame}{Methods Including Nuclear Quantum Effects}
+    \textbf{Path Integral Molecular Dynamics (PIMD)}
+    \begin{itemize}
+        \item Centroid Molecular Dynamics (CMD)
+        \item Ring Polymer Molecular Dynamics (RPMD)
+    \end{itemize}
+    \vspace{1em}
+
+    \textbf{Wave Packet Propagation}
+\end{frame}
+
+\subsection{PIMD}
+
+%---------------------PIMD------------------------------------------
+
+\begin{frame}{PIMD (Path Integral Molecular Dynamics)}
+	\begin{block}{Paper Title}
+	Study of an F center in molten KCl
+	\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Problem: A Quantum Particle in a Classical World}
+  
+  Simulating systems with both quantum and classical particles presents a major challenge. \pause
+  
+  \begin{itemize}
+    \item Consider an electron (a quantum particle) dissolved in a bath of classical ions, like molten salt. \pause
+    
+    \item The electron does not have a fixed position; its quantum nature means it is "fuzzy" and delocalized. \pause
+    
+    \item How can we combine the quantum statistical mechanics of the electron with the classical statistical physics of the ions in a single simulation?
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Path Integral Solution: A Quantum-Classical Isomorphism}
+  
+  The method uses Richard Feynman's path integral formulation to map the quantum problem onto an equivalent classical problem. \pause
+  
+  \begin{block}{The Isomorphism}
+    A single quantum particle is formally proven to be equivalent to a classical \textbf{ring polymer} (or "necklace") made of P beads.
+  \end{block} \pause
+  
+  \begin{itemize}
+    \item Each bead in the necklace is connected to its two neighbors by \textbf{harmonic springs}. This part of the model represents the quantum kinetic energy. \pause
+    
+    \item Every bead also interacts with the external potential created by the classical particles. \pause
+    
+    \item This mapping becomes exact as the number of beads (P) approaches infinity. In practice, a finite but sufficiently large P is used.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Simulating the Necklace: PIMD in Action}
+  
+  Once the quantum particle is represented as a classical polymer, the entire system can be simulated using standard \textbf{Molecular Dynamics (MD)}. \pause
+  
+  \begin{alertblock}{Physical Interpretation}
+    \begin{itemize}
+      \item The \textbf{spatial spread} of the polymer beads directly represents the quantum "fuzziness" or delocalization of the particle. \pause
+      \begin{itemize}
+          \item A compact, collapsed necklace means the particle is highly localized (like an F center).
+          \item A spread-out, large necklace means the particle is delocalized. \pause
+      \end{itemize}
+      \item This allows us to calculate quantum properties like kinetic energy and study phenomena like electron localization, all within a classical simulation framework.
+    \end{itemize}
+  \end{alertblock}
+  
+\end{frame}
+
+%-----------------CMD---------------------------------------------
+
+\begin{frame}{CMD (centroid molecular dynamics)}
+	\begin{block}{Paper Title}
+	The formulation of quantum statistical mechanics based on the Feynman path
+centroid density. II. Dynamical properties
+	\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Beyond Static Properties: The Challenge of Quantum Dynamics}
+  
+  The Path Integral formalism (PIMD) is excellent for calculating equilibrium quantum properties by mapping a particle to a classical ring polymer. \pause
+  
+  \begin{itemize}
+    \item However, the "dynamics" used in a PIMD simulation are fictitious; they are simply a tool to sample configurations. \pause
+    
+    \item This leaves a critical question open: How can we calculate \textbf{real-time dynamical properties}, such as time correlation functions $\langle A(t)B(0)\rangle$? \pause
+    
+    \item We need a way to extract real physical evolution from the path integral framework.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Centroid Molecular Dynamics (CMD): The Core Idea}
+  
+  The CMD method proposes that the most important dynamical information is captured by a special variable: the \textbf{path centroid}. \pause
+  
+  \begin{itemize}
+    \item The centroid is the center of mass (average position) of all the beads in the path integral polymer. It is considered the most direct classical-like variable in the quantum system. \pause
+    
+    \item \textbf{The Central Approximation:} The full, complex quantum dynamics of a particle can be effectively approximated by the \textbf{classical evolution of its centroid}. \pause
+    
+    \item However, the centroid does not move on the classical potential. It evolves on a \textbf{quantum potential of mean force} ($V_c$). \pause
+    
+    \item This "centroid potential" is an effective potential averaged over all the quantum fluctuations of the polymer beads, and it implicitly includes quantum effects like zero-point energy and tunneling.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{CMD in Action: A "Quasiclassical" Simulation}
+  
+  The CMD method provides a practical algorithm for simulating quantum dynamics. \pause
+  
+  \begin{block}{The Simulation Process}
+    A molecular dynamics simulation is performed, but only for the centroid coordinates, which behave like classical particles.
+  \end{block} \pause
+  
+  \begin{itemize}
+    \item These centroids evolve according to Newton's equations of motion ($F_c = m \ddot{q}_c$). \pause
+    
+    \item The force ($F_c$) is not the classical force, but the \textbf{quantum mean force}, derived from the gradient of the centroid potential ($F_c = -\nabla V_c$). \pause
+    
+    \item The resulting "centroid trajectories" are then used to compute approximate quantum time correlation functions. \pause
+  \end{itemize}
+  
+  \begin{alertblock}{Key Advantage}
+    The computational cost of a CMD simulation scales in the same way as a purely classical simulation, making it a powerful tool for studying quantum dynamical effects in large, complex systems.
+  \end{alertblock}
+\end{frame}
+=======
+\begin{frame}{RPMD for Real-Time Quantum Correlation Functions}
+
+\begin{itemize}
+    \item \textbf{The Problem:} The exact calculation of quantum real-time correlation functions is still considered "a very difficult problem".
+    
+    \item \textbf{General Approach:} A number of methods have been proposed to include short-time quantum mechanical effects in classical molecular dynamics simulations. These methods typically combine an exact treatment of the quantum Boltzmann operator with an approximate treatment of the real-time evolution based on classical mechanics.
+    
+    \item \textbf{The Proposed Method (RPMD):} We propose an approximate method, based on path integral (Parrinello-Rahman) molecular dynamics, for calculating \textbf{Kubo-transformed real-time correlation functions} involving position-dependent operators.
+    
+    \item \textbf{Core Idea:} Exploit the isomorphism between the path integral representation of the quantum mechanical partition function and the classical partition function of a fictitious ring polymer.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Methodology: Kubo Transform and Dynamics}
+
+\begin{itemize}
+    \item \textbf{Object of Interest:} The method focuses on the Kubo-transformed correlation function, $\tilde{C}_{AB}(t)$.
+    \begin{itemize}
+        \item This function is appealing because it has the same symmetries as a classical correlation function.
+    \end{itemize}
+
+    \item \textbf{Initial Condition ($t=0$):} The $t \to 0$ limit of $\tilde{C}_{AB}(t)$ coincides with a purely classical phase space average $\langle A_n(x) B_n(x) \rangle_n$ calculated for the fictitious ring polymer system.
+    
+    \item \textbf{Time Evolution:} To extend this result to times $t > 0$, the method uses the classical dynamics generated by the ring polymer Hamiltonian $H_n(p,x)$.
+    \begin{itemize}
+        \item The resulting correlation function, $\langle A(0)B(t) \rangle_n$, is calculated via integration over initial phase space variables evolved using the classical equations of motion.
+    \end{itemize}
+    
+    \item \textbf{Symmetry Guarantee:} The classical ring-polymer correlation function $\langle A(0)B(t) \rangle_n$ maintains the crucial symmetries of $\tilde{C}_{AB}(t)$, including the quantum mechanical detailed balance condition.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Key Analytical Results and Advantages}
+
+\begin{itemize}
+    \item \textbf{RPMD is Exact at $t=0$:} The resulting correlation functions coincide with the exact quantum mechanical result in the limit as $t \to 0$ (for sufficiently large $n$).
+    
+    \item \textbf{The Harmonic Limit:} RPMD gives the exact quantum mechanical result $\tilde{C}_{AB}(t)$ for all times $t$ in a harmonic potential, provided that one or both operators ($A(\hat{x})$ or $B(\hat{x})$) are linear functions of position.
+    \begin{itemize}
+        \item For the position autocorrelation function $\tilde{C}_{xx}(t)$, the classical limit ($n=1$ polymer bead) is already exact in the harmonic case.
+    \end{itemize}
+    
+    \item \textbf{Consistent Improvement:} The RPMD correlation functions are consistently better than those given by purely classical molecular dynamics.
+    \begin{itemize}
+        \item This improvement is \textbf{most apparent in the low-temperature regime} where quantum statistics are critically important.
+    \end{itemize}
+    
+    \item \textbf{Computational Efficiency:} RPMD requires less computational work compared to the related centroid molecular dynamics method, yet its results are only marginally less accurate for tested problems.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Limitations and Summary}
+
+\begin{itemize}
+    \item \textbf{Short-Time Focus:} The method is designed primarily to give an accurate approximation to the quantum mechanical correlation function for times on the order of the thermal time ($\beta\hbar$).
+    
+    \item \textbf{Missing Quantum Dynamics:} The neglect of quantum phase information in the subsequent dynamics is clearly undesirable.
+    
+    \item \textbf{Failure for Long-Time Coherences:} The method misses long-time quantum coherence effects that arise in simple one-dimensional anharmonic systems (e.g., the quartic oscillator).
+    \begin{itemize}
+        \item This failure is expected, as the method does not contain the phase information needed to capture long-time quantum oscillations.
+        \item The method performs well only in situations where quantum effects in the dynamics are comparatively unimportant.
+    \end{itemize}
+    
+    \item \textbf{Summary:} RPMD successfully includes short-time quantum effects stemming from the Boltzmann operator, providing a consistent improvement over classical MD, especially at lower temperatures.
+    
+    \item \textbf{Future Work:} It will be interesting to test RPMD in condensed phase applications, such as calculating the infrared absorption spectrum of liquid water.
+\end{itemize}
+\end{frame}

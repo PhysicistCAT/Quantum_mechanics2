@@ -1,0 +1,65 @@
+\begin{frame}
+
+    \textbf{Trajectory Surface Hopping (TSH)}
+    \vspace{1.5em}
+    
+    \textbf{Multi-Configuration Time-Dependent Hartree (MCTDH)}
+\end{frame}
+
+%------------------TSH-----------------------------------------------
+
+\begin{frame}{TSH}
+	\begin{block}{Paper Title}
+	Molecular dynamics with electronic transitions
+	\end{block}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Challenge: When Quantum Electrons Meet Classical Atoms}
+  
+  Standard Molecular Dynamics is powerful, but it has a fundamental limit: it assumes atoms always move on a \textbf{single potential energy surface}. \pause
+  
+  \begin{itemize}
+    \item This works well for many ground-state processes. \pause
+    
+    \item But what happens in photochemistry, or during an electron transfer? \pause
+    
+    \item The electronic state changes, and the forces governing the atoms change drastically. The system effectively jumps to a \textbf{new potential energy surface}. \pause
+    
+    \item We need a method that can simulate classical atomic trajectories while allowing for quantum electronic transitions.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Trajectory Surface Hopping (TSH) Solution}
+  
+  The TSH method combines classical and quantum mechanics in a self-consistent way. \pause
+  
+  \begin{block}{The Core Idea}
+    A trajectory evolves classically on a single electronic state at any given time, but it has a certain probability of "hopping" to another state.
+  \end{block} \pause
+  
+  Two calculations happen in parallel:
+  
+  \begin{itemize}
+    \item \textbf{Classical Atoms:} The atomic positions evolve according to Newton's equations on the \textit{currently active} potential energy surface. \pause
+    
+    \item \textbf{Quantum Electrons:} The time-dependent Schrödinger equation is solved for the electrons along this trajectory, yielding the probability of being in \textit{any} of the available electronic states.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{The "Fewest Switches" Algorithm}
+  
+  The key is deciding when to hop. The TSH method uses a clever probabilistic algorithm. \pause
+  
+  \begin{itemize}
+    \item At each time step, the algorithm calculates the probability of switching from the current state to any other state. \pause
+    
+    \item This is based on the "fewest switches" criterion: it minimizes the number of hops while ensuring that an ensemble of trajectories correctly reproduces the quantum populations of each state. \pause
+    
+    \item A random number is used to make a stochastic decision: \textbf{to hop or not to hop}. \pause
+    
+    \item If a hop occurs, the atoms' velocities are instantly adjusted to conserve total energy, and the trajectory continues on the new potential energy surface.
+  \end{itemize}
+\end{frame}

@@ -1,0 +1,86 @@
+\documentclass{beamer}
+\usetheme{Madrid}
+\usecolortheme{default}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} } 
+
+\usepackage{textcomp}
+
+% --- CONFIGURACIÓN DE BIBLIOGRAFÍA CORREGIDA Y FINAL ---
+% Se cambia el estilo 'plain' por 'numeric', que es el estándar en biblatex.
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
+\addbibresource{sections/references.bib} 
+
+
+\title[ETH]{From Quantum Chaos and Eigenstate Thermalization to Statistical Mechanics and Thermodynamics}
+\author{Juan Acuña \\ Bryan Martinez \\ Jose Zamora}
+\institute{Universidad Distrital Francisco José de Caldas}
+\date{15/10/25}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Idex}
+    \tableofcontents
+\end{frame}
+
+% --- Secciones del documento ---
+\section{Introduction}
+\input{sections/introduction.tex}
+
+\section{Random Matrix Theory (RMT)}
+\input{sections/RMT.tex}
+
+\section{Quantum Chaos}
+\input{sections/quantum_chaos.tex}
+
+\section{Eigenstates Thermalziation Theory (ETH)}
+\input{sections/ETH.tex}
+
+\section{Numerical Experiments}
+\input{sections/numerical_experiment.tex}
+
+\section{Thermodynamics Laws}
+\input{sections/thermodynamics_law.tex}
+
+\section{Fluctuation Theorems}
+\input{sections/fluctuation_theorems.tex}
+
+\section{Applications}
+\input{sections/applications.tex}
+
+\section{Generalized Gibbs Ensemble (GGE)}
+\input{sections/GGE.tex}
+
+\section{PreThermalization}
+\input{sections/prethermalization.tex}
+
+\section{Knowlegde GAP}
+\input{sections/knowledge_GAP}
+
+\begin{frame}[allowframebreaks]{Referencias}
+    \nocite{•}
+    \printbibliography
+\end{frame}
+
+
+\begin{frame}{Thank you!}
+    \centering
+    \Huge
+    Any Questions?
+\end{frame}
+
+\end{document}
